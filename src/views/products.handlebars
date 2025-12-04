@@ -1,0 +1,30 @@
+<h1>Productos</h1>
+
+<ul>
+  {{#each products}}
+    <li>
+      <strong>{{this.title}}</strong> - ${{this.price}} <br>
+      Categoría: {{this.category}} <br>
+
+      
+      <form method="post" action="/carts/6932165d061937d1b869674b/products/{{this._id}}">
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit">Agregar al carrito</button>
+      </form>
+
+      <br>
+    </li>
+  {{/each}}
+</ul>
+
+<div style="margin-top: 20px;">
+  {{#if hasPrevPage}}
+    <a href="/products?page={{prevPage}}">Anterior</a>
+  {{/if}}
+
+  <span>Página {{page}}</span>
+
+  {{#if hasNextPage}}
+    <a href="/products?page={{nextPage}}">Siguiente</a>
+  {{/if}}
+</div>
